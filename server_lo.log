@@ -1,0 +1,4 @@
+2022-07-29 17:55:15 INFO  PruebaU2PaP2LoApplication:22 - alsjb bhabckj
+2022-07-29 19:22:13 INFO  CitaMedicaRepositoryImpl:58 - CitaMedicaTO [numero=T001, fechaCita=2022-07-29T18:50:30.449929, costoCita=20.00, fechaControl=2022-10-10T10:00]
+2022-07-29 19:28:32 INFO  CitaMedicaRepositoryImpl:58 - CitaMedicaTO [numero=T001, fechaCita=2022-07-29T19:28:32.427325, costoCita=20.00, fechaControl=2022-10-10T10:00]
+2022-07-29 19:41:59 INFO  CitaMedicaRepositoryImpl:58 - CitaMedicaTO [numero=T002, fechaCita=2022-07-29T19:41:59.474004, costoCita=40.00, fechaControl=2022-08-10T11:00]
