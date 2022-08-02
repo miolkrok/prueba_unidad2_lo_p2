@@ -1,4 +1,4 @@
-package com.uce.edu.demo.repository;
+spackage com.uce.edu.demo.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

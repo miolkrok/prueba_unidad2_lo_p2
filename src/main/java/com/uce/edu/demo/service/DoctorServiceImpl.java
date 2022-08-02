@@ -7,11 +7,11 @@ import com.uce.edu.demo.repository.IDoctorRepository;
 import com.uce.edu.demo.repository.modelo.Doctor;
 
 @Service
-public class DoctorServiceImpl implements IDoctorService{
+public class DoctorServiceImpl implements IDoctorService {
 
 	@Autowired
 	private IDoctorRepository doctorRepository;
-	
+
 	@Override
 	public void insertar(Doctor doctor) {
 		// TODO Auto-generated method stub

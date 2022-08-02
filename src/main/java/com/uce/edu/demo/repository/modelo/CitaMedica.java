@@ -43,7 +43,7 @@ public class CitaMedica {
 	@JoinColumn(name = "cime_id_paciente")
 	private Paciente paciente;
 
-	//SET Y GET
+	// SET Y GET
 	public int getId() {
 		return id;
 	}
@@ -130,9 +130,5 @@ public class CitaMedica {
 				+ ", lugarCita=" + lugarCita + ", diagnostico=" + diagnostico + ", receta=" + receta + ", fechaControl="
 				+ fechaControl + ", doctor=" + doctor + ", paciente=" + paciente + "]";
 	}
-
-
-
-
 
 }

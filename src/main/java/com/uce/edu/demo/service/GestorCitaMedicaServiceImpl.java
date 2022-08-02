@@ -12,19 +12,20 @@ import com.uce.edu.demo.repository.IDoctorRepository;
 import com.uce.edu.demo.repository.IPacienteRepository;
 import com.uce.edu.demo.repository.modelo.CitaMedica;
 import com.uce.edu.demo.repository.modelo.CitaMedicaTO;
+import com.uce.edu.demo.repository.modelo.PacienteTO;
 
 @Service
-public class GestorCitaMedicaServiceImpl implements IGestorCitaMedicaService{
+public class GestorCitaMedicaServiceImpl implements IGestorCitaMedicaService {
 
 	@Autowired
 	private IPacienteRepository pacienteRepository;
-	
+
 	@Autowired
 	private IDoctorRepository doctorRepository;
-	
+
 	@Autowired
 	private ICitaMedicaRepository citaMedicaRepository;
-	
+
 	@Override
 	public void agendamientoCita(String numeroTurno, LocalDateTime fechaCita, BigDecimal costoCita, String lugarCita,
 			String cedulaDoc, String cedulaPaci) {
@@ -36,7 +37,7 @@ public class GestorCitaMedicaServiceImpl implements IGestorCitaMedicaService{
 		cime.setLugarCita(lugarCita);
 		cime.setDoctor(this.doctorRepository.buscarPorCedulaDoctor(cedulaDoc));
 		cime.setPaciente(this.pacienteRepository.buscarPorCedulaPaciente(cedulaPaci));
-		this.citaMedicaRepository.insertar(cime);	
+		this.citaMedicaRepository.insertar(cime);
 	}
 
 	@Override
@@ -53,6 +54,12 @@ public class GestorCitaMedicaServiceImpl implements IGestorCitaMedicaService{
 	public List<CitaMedicaTO> reporteCitas(LocalDateTime fechaCita, BigDecimal costoCita) {
 		// TODO Auto-generated method stub
 		return this.citaMedicaRepository.reporteCitas(fechaCita, costoCita);
+	}
+
+	@Override
+	public List<PacienteTO> buscarPorFechaGenero(LocalDateTime fechaNacimiento, String genero) {
+		// TODO Auto-generated method stub
+		return this.pacienteRepository.buscarPorFechaGenero(fechaNacimiento, genero);
 	}
 
 }

@@ -17,13 +17,13 @@ import com.uce.edu.demo.repository.modelo.CitaMedicaTO;
 
 @Repository
 @Transactional
-public class CitaMedicaRepositoryImpl implements ICitaMedicaRepository{
+public class CitaMedicaRepositoryImpl implements ICitaMedicaRepository {
 
-	private static final Logger LOG=Logger.getLogger(CitaMedicaRepositoryImpl.class);
-	
+	private static final Logger LOG = Logger.getLogger(CitaMedicaRepositoryImpl.class);
+
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Override
 	public void insertar(CitaMedica citaMedica) {
 		// TODO Auto-generated method stub
@@ -49,12 +49,13 @@ public class CitaMedicaRepositoryImpl implements ICitaMedicaRepository{
 	@Override
 	public List<CitaMedicaTO> reporteCitas(LocalDateTime fechaCita, BigDecimal costoCita) {
 		// TODO Auto-generated method stub
-		TypedQuery<CitaMedicaTO> myTypedQuery = this.entityManager
-				.createQuery("SELECT NEW com.uce.edu.demo.repository.modelo.CitaMedicaTO(c.numero,c.fechaCita,c.costoCita,c.fechaControl) FROM CitaMedica c WHERE c.fechaCita >:datoFechaCita AND c.costoCita >:datoCostoCita",CitaMedicaTO.class);
+		TypedQuery<CitaMedicaTO> myTypedQuery = this.entityManager.createQuery(
+				"SELECT NEW com.uce.edu.demo.repository.modelo.CitaMedicaTO(c.numero,c.fechaCita,c.costoCita,c.fechaControl) FROM CitaMedica c WHERE c.fechaCita >:datoFechaCita AND c.costoCita >:datoCostoCita",
+				CitaMedicaTO.class);
 		myTypedQuery.setParameter("datoFechaCita", fechaCita);
 		myTypedQuery.setParameter("datoCostoCita", costoCita);
 		List<CitaMedicaTO> reporte = myTypedQuery.getResultList();
-		for(CitaMedicaTO citaMedicaTO : reporte) {
+		for (CitaMedicaTO citaMedicaTO : reporte) {
 			LOG.info(citaMedicaTO.toString());
 		}
 		return reporte;

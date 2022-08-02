@@ -40,7 +40,7 @@ public class Paciente {
 	@OneToMany(mappedBy = "paciente")
 	private List<CitaMedica> citaMedica;
 
-	//SET Y GET
+	// SET Y GET
 	public int getId() {
 		return id;
 	}
@@ -127,7 +127,5 @@ public class Paciente {
 				+ ", fechaNacimiento=" + fechaNacimiento + ", codigoIess=" + codigoIess + ", estatura=" + estatura
 				+ ", peso=" + peso + ", genero=" + genero + ", citaMedica=" + citaMedica + "]";
 	}
-
-
 
 }

@@ -1,5 +1,8 @@
 package com.uce.edu.demo.repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -8,6 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.demo.repository.modelo.Paciente;
+import com.uce.edu.demo.repository.modelo.PacienteTO;
 
 @Repository
 @Transactional
@@ -49,8 +53,19 @@ public class PacienteRepositoryImpl implements IPacienteRepository {
 		return myTypedQuery.getSingleResult();
 	}
 
-	
-
-
+	@Override
+	public List<PacienteTO> buscarPorFechaGenero(LocalDateTime fechaNacimiento, String genero) {
+		// TODO Auto-generated method stub
+		TypedQuery<PacienteTO> myTypedQuery = this.entityManager
+				.createQuery("SELECT NEW com.uce.edu.demo.repository.modelo.PacienteTO(p.cedula,p.nombre,p.fechaNacimiento,p.genero) FROM Paciente p WHERE p.fechaNacimiento >=:datoFechaNacimiento AND p.genero =:datoGenero",
+				PacienteTO.class);
+		myTypedQuery.setParameter("datoFechaNacimiento", fechaNacimiento);
+		myTypedQuery.setParameter("datoGenero", genero);
+		List<PacienteTO> listPaciente = myTypedQuery.getResultList();
+		for(PacienteTO pacienteTO : listPaciente) {
+			System.out.println(pacienteTO.toString());
+		}
+		return listPaciente;
+	}
 
 }
